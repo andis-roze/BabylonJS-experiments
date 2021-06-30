@@ -7,8 +7,8 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
 import { Texture } from "@babylonjs/core/Materials/Textures/texture";
 import { AdvancedDynamicTexture } from "@babylonjs/gui/2D/advancedDynamicTexture";
+import { Button } from "@babylonjs/gui/2D/controls/button";
 import { TextBlock } from "@babylonjs/gui/2D/controls/textBlock";
-import { Control } from "@babylonjs/gui/2D";
 
 export class Application {
     private canvas: HTMLCanvasElement;
@@ -37,7 +37,6 @@ export class Application {
         this.camera = new UniversalCamera("camera", new Vector3(0, 0, -1), this.scene);
         this.camera.setTarget(Vector3.Zero());
         this.camera.mode = UniversalCamera.ORTHOGRAPHIC_CAMERA;
-        this.camera.attachControl(this.canvas, true);
         
         this.initFps();
         this.initPlane();
@@ -47,16 +46,23 @@ export class Application {
 
     private initFps(): void {
         const advancedDynamicTexture = AdvancedDynamicTexture.CreateFullscreenUI("UI"); 
+        const button = new Button();
 
         this.fpsText = new TextBlock();
         this.fpsText.text = `${Math.floor(this.engine.getFps())} FPS`;
         this.fpsText.color = "black";
         this.fpsText.fontSize = 18;
-        this.fpsText.width = "65px";
-        this.fpsText.height = "20px";
-        advancedDynamicTexture.addControl(this.fpsText);
-        this.fpsText.horizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
-        this.fpsText.verticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
+
+        button.background = "white";
+        button.color = "orange";
+        button.widthInPixels = 65;
+        button.heightInPixels = 20;
+        button.isHitTestVisible = false;
+        button.horizontalAlignment = Button.HORIZONTAL_ALIGNMENT_LEFT;
+        button.verticalAlignment = Button.VERTICAL_ALIGNMENT_TOP;
+        button.addControl(this.fpsText);
+
+        advancedDynamicTexture.addControl(button);
     }
 
     private initPlane(): void {

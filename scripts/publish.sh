@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rfv ./dist
 yarn dist
 git checkout gh-pages
 cp -r ./dist/* ./
