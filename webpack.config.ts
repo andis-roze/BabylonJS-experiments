@@ -32,6 +32,8 @@ const config: webpack.Configuration = {
             title: "BabylonJS playground",
             template: "./src/index.html",
             filename: "./index.html",
+            inject: false,
+            minify: false,
         }),
     ],
     module: {

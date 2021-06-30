@@ -1,8 +1,7 @@
 #!/bin/bash
 
-git checkout gh-pages
-git rebase master
 yarn dist
+git checkout gh-pages
 cp ./dist/* ./
 git add .
 git commit --amend
