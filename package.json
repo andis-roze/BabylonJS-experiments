@@ -4,7 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "dist": "webpack --mode production",
+    "dist": "webpack --mode development",
     "start": "webpack serve --mode development --progress"
   },
   "dependencies": {},
