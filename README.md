@@ -1,5 +1,4 @@
-# sphere-experiment
-Play around with sphere and procedural generation in WebGL
+# BabylonJS experiments
 
 ```
 yarn install

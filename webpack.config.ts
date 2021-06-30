@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const config: webpack.Configuration = {
     name: "BabylonJS-playground",
     optimization: {
-        sideEffects: false,
         splitChunks: {
             cacheGroups: {
                 commons: {
@@ -42,9 +41,6 @@ const config: webpack.Configuration = {
             exclude: /node_modules/,
         }]
     },
-    devServer: {
-        contentBase: path.join(__dirname, "dist", "developmwent")
-    }
 };
 
 export default config;
