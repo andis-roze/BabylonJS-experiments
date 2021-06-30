@@ -1,8 +1,14 @@
 import * as webpack from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import * as path from "path";
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
-const config: webpack.Configuration = {
+interface Configuration extends webpack.Configuration {
+    devServer?: WebpackDevServerConfiguration;
+  }
+
+const config: Configuration = {
     name: "BabylonJS-playground",
     optimization: {
         splitChunks: {
@@ -35,6 +41,11 @@ const config: webpack.Configuration = {
             inject: false,
             minify: false,
         }),
+        new CopyPlugin({
+            patterns: [
+                { from: "./src/assets", to: "./assets/" },
+            ],
+        }),
     ],
     module: {
         rules: [
@@ -49,6 +60,9 @@ const config: webpack.Configuration = {
             },
         ]
     },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+    }
 };
 
 export default config;

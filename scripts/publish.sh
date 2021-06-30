@@ -2,7 +2,7 @@
 
 yarn dist
 git checkout gh-pages
-cp ./dist/* ./
+cp -r ./dist/* ./
 git add .
 git commit --amend
 git please
