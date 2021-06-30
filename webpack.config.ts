@@ -35,11 +35,17 @@ const config: webpack.Configuration = {
         }),
     ],
     module: {
-        rules: [{
-            test: /\.ts$/,
-            loader: "ts-loader",
-            exclude: /node_modules/,
-        }]
+        rules: [
+            {
+                test: /\.ts$/,
+                loader: "ts-loader",
+                exclude: /node_modules/,
+            },
+            {
+              test: /\.(png|svg|jpg|jpeg|gif)$/i,
+              type: 'asset/resource',
+            },
+        ]
     },
 };
 

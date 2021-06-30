@@ -60,7 +60,7 @@ export class Application {
     }
 
     private initPlane(): void {
-        const texture = new Texture("https://a.slack-edge.com/80588/img/404/marrakesh-meadow-80.jpg", this.scene);
+        const texture = new Texture("./assets/meadow.jpg", this.scene);
 
         Texture.WhenAllReady([texture], () => {
             const { width: textureWidth, height: textureHeight } = texture.getSize();
